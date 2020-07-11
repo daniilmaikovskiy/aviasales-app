@@ -25,13 +25,7 @@
     "deploy": "gh-pages -d build",
     "format": "prettier ./src --write",
     "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix",
-    "connect": "git remote add origin https://github.com/daniilmaikovskiy/aviasales-app.git",
-    "gitemail": "git config user.email 'maikovsky.danil@gmail.com'",
-    "gitname": "git config user.name 'daniilmaikovskiy'",
-    "gitconfig": "rm -r .git; git init; npm run gitname; npm run gitemail",
-    "newproject": "npm run gitconfig; chmod -R 777 .git; npm install; npm run commit 'init'",
-    "init": "npm run newproject; npm run connect; sudo chmod -R 777 .git"
+    "lint:fix": "eslint ./src --fix"
   },
   "browserslist": {
     "production": [
