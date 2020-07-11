@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #E5E5E5;
+}

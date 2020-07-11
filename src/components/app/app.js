@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from './app.module.scss';
+import Picture from '../picture';
 
 export default function App() {
   return (
     <div className={classes.wrapper}>
-      <h1>Hello World</h1>
+      <Picture />
     </div>
   );
 }
