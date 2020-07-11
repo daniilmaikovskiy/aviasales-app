@@ -5,7 +5,7 @@ import Picture from '../picture';
 export default function App() {
   return (
     <div className={classes.wrapper}>
-      <Picture />
+      <Picture className={classes.logo} />
     </div>
   );
 }
