@@ -1,18 +1,4 @@
-## Get Started
-
-1. In package.json rewrite
-    - name
-    - homepage
-    - script connect
-    - script gitname
-    - script gitemail
-
-2. In terminal
-    - sudo npm run init
-
-3. Delete in
-    - package.json scripts: connect, gitemail, gitname, gitconfig, newproject, init
-    - readme: Get Started
+gh-pages: https://daniilmaikovskiy.github.io/aviasales-app
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
