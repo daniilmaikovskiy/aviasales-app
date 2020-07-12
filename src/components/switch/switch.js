@@ -1,15 +1,25 @@
 import React from 'react';
-import classes from './switch.module.scss';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import SwitchButton from '../switch-button';
 
-export default function Switch() {
+const Switch = ({ switchKeys }) => {
   return (
     <div>
-      <button type="button" className={`${classes.btn} ${classes.secondary} ${classes.changed}`}>
-        Самый дешевый
-      </button>
-      <button type="button" className={`${classes.btn} ${classes.primary}`}>
-        Самый быстрый
-      </button>
+      <SwitchButton name="cheapest" switchKeys={switchKeys} />
+      <SwitchButton name="fastest" switchKeys={switchKeys} />
     </div>
   );
-}
+};
+
+Switch.propTypes = {
+  switchKeys: PropTypes.arrayOf(String).isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    switchKeys: state.switchKeys,
+  };
+};
+
+export default connect(mapStateToProps)(Switch);
