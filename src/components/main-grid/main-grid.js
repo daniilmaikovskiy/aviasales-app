@@ -6,10 +6,10 @@ import Tickets from '../tickets';
 export default function MainGrid() {
   return (
     <main className={classes.grid}>
-      <div className={classes.column1}>
+      <div>
         <TransfersMenu />
       </div>
-      <div className={classes.column2}>
+      <div>
         <Tickets />
       </div>
     </main>

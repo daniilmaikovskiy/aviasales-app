@@ -1,50 +1,50 @@
-$switch-btn-background: #FFFFFF;
-$switch-btn-border-color: #DFE5EC;
-$switch-btn-color: #4A4A4A;
-$switch-changed-background: #2196F3;
-$switch-changed-color: #FFFFFF;
+$switch-btn-background: #ffffff;
+$switch-btn-border-color: #dfe5ec;
+$switch-btn-color: #4a4a4a;
+$switch-changed-background: #2196f3;
+$switch-changed-color: #ffffff;
 
 .btn {
-    width: 50%;
-    height: 100%;
-    background: $switch-btn-background;
-    border: 1px solid $switch-btn-border-color;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: $switch-btn-color;
-    outline: none;
-    transition: all 0.5s ease;
+  width: 50%;
+  height: 100%;
+  background: $switch-btn-background;
+  border: 1px solid $switch-btn-border-color;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: $switch-btn-color;
+  outline: none;
+  transition: all 0.5s ease;
 
-    &:not(.changed) {
-        cursor: pointer;
+  &:not(.changed) {
+    cursor: pointer;
 
-        &:hover {
-            transform: scale(1.03);
-        }
+    &:hover {
+      transform: scale(1.03);
     }
+  }
 
-    &:focus {
-        transform: scale(1.03);
-    }
+  &:focus {
+    transform: scale(1.03);
+  }
 }
 
 .primary {
-    border-radius: 5px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .secondary {
-    border-radius: 5px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .changed {
-    background: $switch-changed-background;
-    color: $switch-changed-color;
-    border: none;
+  background: $switch-changed-background;
+  color: $switch-changed-color;
+  border: none;
 }
