@@ -29,6 +29,10 @@ $switch-changed-color: #ffffff;
   &:focus {
     transform: scale(1.03);
   }
+
+  @media (max-width: 419px) {
+    font-size: 10px;
+  }
 }
 
 .primary {

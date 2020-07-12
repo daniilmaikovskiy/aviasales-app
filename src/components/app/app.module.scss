@@ -7,6 +7,15 @@
   width: 100%;
   max-width: 960px;
   padding: 0 100px;
+  transition: all 0.5 ease;
+
+  @media (max-width: 959px) {
+    padding: 0 50px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 20px;
+  }
 }
 
 .logo {

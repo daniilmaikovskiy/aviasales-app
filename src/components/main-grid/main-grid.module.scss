@@ -1,6 +1,10 @@
 .grid {
   display: grid;
-  grid-template-columns: 232px 502px;
+  grid-template-columns: 232px 1fr;
   gap: 20px;
   width: 100%;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 }
