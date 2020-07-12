@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { btn, primary, secondary, changed } from './switch-button.module.scss';
+import actions from '../../actions';
 
 const getDataByName = (name) => {
   switch (name) {
@@ -19,7 +21,7 @@ const getDataByName = (name) => {
   }
 };
 
-const SwitchButton = ({ name, switchKeys }) => {
+const SwitchButton = ({ name, switchKeys, switchBtnPressed }) => {
   const data = getDataByName(name);
   const { classes } = data;
 
@@ -27,8 +29,10 @@ const SwitchButton = ({ name, switchKeys }) => {
     classes.push(changed);
   }
 
+  const className = classes.join(' ');
+
   return (
-    <button type="button" name={name} className={classes.join(' ')}>
+    <button type="button" name={name} className={className} onClick={() => switchBtnPressed(name)}>
       {data.text}
     </button>
   );
@@ -37,6 +41,13 @@ const SwitchButton = ({ name, switchKeys }) => {
 SwitchButton.propTypes = {
   switchKeys: PropTypes.arrayOf(String).isRequired,
   name: PropTypes.string.isRequired,
+  switchBtnPressed: PropTypes.func.isRequired,
 };
 
-export default SwitchButton;
+const mapStateToProps = (state) => {
+  return {
+    switchKeys: state.switchKeys,
+  };
+};
+
+export default connect(mapStateToProps, actions)(SwitchButton);

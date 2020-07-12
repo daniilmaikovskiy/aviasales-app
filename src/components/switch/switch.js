@@ -1,25 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import SwitchButton from '../switch-button';
 
-const Switch = ({ switchKeys }) => {
+const Switch = () => {
   return (
     <div>
-      <SwitchButton name="cheapest" switchKeys={switchKeys} />
-      <SwitchButton name="fastest" switchKeys={switchKeys} />
+      <SwitchButton name="cheapest" />
+      <SwitchButton name="fastest" />
     </div>
   );
 };
 
-Switch.propTypes = {
-  switchKeys: PropTypes.arrayOf(String).isRequired,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    switchKeys: state.switchKeys,
-  };
-};
-
-export default connect(mapStateToProps)(Switch);
+export default Switch;
