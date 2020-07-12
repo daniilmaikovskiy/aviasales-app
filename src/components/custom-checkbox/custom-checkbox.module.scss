@@ -17,8 +17,7 @@ $custom-cheeckbox-text-color: #4a4a4a;
 }
 
 .oldCheckbox:focus ~ .checkbox {
-  width: 18px;
-  height: 18px;
+  transform: scale(1.1);
 }
 
 .text {
