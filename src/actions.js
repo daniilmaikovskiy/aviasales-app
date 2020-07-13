@@ -5,8 +5,16 @@ const switchBtnPressed = (name) => {
   };
 };
 
+const transfersCheckboxChecked = (name) => {
+  return {
+    type: 'TRANSFERS_CHECKBOX_CHECKED',
+    name,
+  };
+};
+
 const actions = {
   switchBtnPressed,
+  transfersCheckboxChecked,
 };
 
 export default actions;
