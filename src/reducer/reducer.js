@@ -22,6 +22,12 @@ export default function reducer(
   state = {
     switchKeys: ['cheapest'],
     transfersFilter: ['one-transfer', 'two-transfers'],
+    querySearchId: {
+      id: '',
+      loading: true,
+      error: false,
+      errorMessage: '',
+    },
   },
   action
 ) {
@@ -52,6 +58,17 @@ export default function reducer(
 
       return { ...state, transfersFilter };
     }
+    case 'RECEIVED_SEARCH_ID': {
+      return { ...state, querySearchId: { ...state.querySearchId, id: action.payload } };
+    }
+    case 'ERROR_OF_RECEIVING_SEARCH_ID': {
+      return {
+        ...state,
+        querySearchId: { ...state.querySearchId, error: true, errorMessage: action.message },
+      };
+    }
+    case 'LOADED_SEARCH_ID':
+      return { ...state, querySearchId: { ...state.querySearchId, loading: false } };
     default:
       return state;
   }
