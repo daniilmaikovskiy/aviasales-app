@@ -1,39 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { btn, primary, secondary, changed } from './switch-button.module.scss';
+import { btn, left, right, changed } from './switch-button.module.scss';
 import actions from '../../actions';
 
-const getDataByName = (name) => {
-  switch (name) {
-    case 'cheapest':
-      return {
-        text: 'Самый дешевый',
-        classes: [btn, secondary],
-      };
-    case 'fastest':
-      return {
-        text: 'Самый быстрый',
-        classes: [btn, primary],
-      };
-    default:
-      throw new Error('Unknown name');
-  }
-};
+const SwitchButton = ({ name, text, orientation, switchKeys, switchBtnPressed }) => {
+  const classes = [btn];
 
-const SwitchButton = ({ name, switchKeys, switchBtnPressed }) => {
-  const data = getDataByName(name);
-  const { classes } = data;
+  if (orientation === 'left') {
+    classes.push(left);
+  } else {
+    classes.push(right);
+  }
 
   if (switchKeys.some((el) => el === name)) {
     classes.push(changed);
   }
 
-  const className = classes.join(' ');
-
   return (
-    <button type="button" name={name} className={className} onClick={() => switchBtnPressed(name)}>
-      {data.text}
+    <button
+      type="button"
+      name={name}
+      className={classes.join(' ')}
+      onClick={() => switchBtnPressed(name)}
+    >
+      {text}
     </button>
   );
 };
@@ -41,6 +32,8 @@ const SwitchButton = ({ name, switchKeys, switchBtnPressed }) => {
 SwitchButton.propTypes = {
   switchKeys: PropTypes.arrayOf(String).isRequired,
   name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  orientation: PropTypes.string.isRequired,
   switchBtnPressed: PropTypes.func.isRequired,
 };
 
