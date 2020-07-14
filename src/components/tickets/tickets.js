@@ -6,6 +6,7 @@ import Switch from '../switch';
 import Ticket from '../ticket';
 import AviasalesServiceContext from '../aviasales-service-context';
 import actions from '../../actions/actions';
+import Spinner from '../spinner';
 
 const Tickets = ({ searchId, tickets, stop, loadingTickets }) => {
   const aviasalesService = useContext(AviasalesServiceContext);
@@ -24,7 +25,7 @@ const Tickets = ({ searchId, tickets, stop, loadingTickets }) => {
   return (
     <div className={classes.wrapper}>
       <Switch />
-      <div className={classes.ticketArray}>{visibleTickets}</div>
+      <div className={classes.ticketArray}>{tickets.length ? visibleTickets : <Spinner />}</div>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const App = ({ querySearchId, loadingSearchId }) => {
   }
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} style={{ minHeight: document.body.offsetHeight }}>
       <Picture className={classes.logo} />
       <MainGrid />
     </div>
