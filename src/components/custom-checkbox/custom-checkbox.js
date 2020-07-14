@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classes from './custom-checkbox.module.scss';
-import actions from '../../actions';
+import actions from '../../actions/actions';
 
 const CustomCheckbox = ({ className, name, text, transfersFilter, transfersCheckboxChecked }) => {
   const checked = transfersFilter[0] === 'all' || transfersFilter.some((el) => el === name);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { btn, left, right, changed } from './switch-button.module.scss';
-import actions from '../../actions';
+import actions from '../../actions/actions';
 
 const SwitchButton = ({ name, text, orientation, switchKeys, switchBtnPressed }) => {
   const classes = [btn];

@@ -78,8 +78,8 @@ export default function reducer(
         ...state,
         queryTickets: {
           ...state.queryTickets,
-          stop: action.payload.stop,
-          data: [...state.queryTickets.data, ...action.payload.tickets],
+          stop: action.stop,
+          data: [...state.queryTickets.data, ...action.tickets],
         },
       };
     case 'ERROR_OF_RECEIVING_TICKETS':

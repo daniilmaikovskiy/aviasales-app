@@ -5,7 +5,7 @@ import classes from './app.module.scss';
 import Picture from '../picture';
 import MainGrid from '../main-grid';
 import AviasalesServiceContext from '../aviasales-service-context';
-import actions from '../../actions';
+import actions from '../../actions/actions';
 import ErrorAlert from '../error-alert';
 import Spinner from '../spinner';
 

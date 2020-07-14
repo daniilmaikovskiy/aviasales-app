@@ -1,3 +1,5 @@
+import loadingTickets from './loading-tickets/loading-tickets';
+
 const switchBtnPressed = (name) => {
   return {
     type: 'SWITCH_BTN_PRESSED',
@@ -35,24 +37,6 @@ const startOfLoadingSearchId = (aviasalesService) => {
       .then((searchId) => dispatch(receivedSearchId(searchId)))
       .catch((error) => dispatch(errorOfReceivingSearchId(error.message)))
       .finally(() => dispatch(loadedSearchId()));
-  };
-};
-
-const receivedTickets = (data) => {
-  return {
-    type: 'RECEIVED_TICKETS',
-    payload: data,
-  };
-};
-
-const errorOfReceivingTickets = () => ({ type: 'ERROR_OF_RECEIVING_TICKETS' });
-
-const loadingTickets = (aviasalesService, searchId) => {
-  return (dispatch) => {
-    aviasalesService
-      .getTickets(searchId)
-      .then((data) => dispatch(receivedTickets(data)))
-      .catch(() => dispatch(errorOfReceivingTickets()));
   };
 };
 
