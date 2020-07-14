@@ -1,4 +1,6 @@
 import prepareTicket from './prepare-ticket';
+import changingVisibleTickets from '../changing-visible-tickets/changing-visible-tickets';
+import calculatingTotalPages from '../calculating-total-pages/calculating-total-pages';
 
 const receivedTickets = (tickets, stop, maxId) => {
   return {
@@ -20,6 +22,8 @@ const loadingTickets = (aviasalesService) => {
         const preparedTickets = data.tickets.map((ticket, i) => prepareTicket(ticket, maxId + i));
 
         dispatch(receivedTickets(preparedTickets, data.stop, maxId + preparedTickets.length));
+        dispatch(changingVisibleTickets());
+        dispatch(calculatingTotalPages());
       })
       .catch(() => dispatch(errorOfReceivingTickets()));
   };

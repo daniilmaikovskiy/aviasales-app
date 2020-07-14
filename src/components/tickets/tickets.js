@@ -16,7 +16,6 @@ const Tickets = ({
   stop,
   loadingTickets,
   changingVisibleTickets,
-  calculatingTotalPages,
   changedPage,
   totalPages,
   page,
@@ -26,8 +25,6 @@ const Tickets = ({
   useEffect(() => {
     if (!stop) {
       loadingTickets(aviasalesService);
-      changingVisibleTickets();
-      calculatingTotalPages();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tickets]);
@@ -62,7 +59,6 @@ Tickets.propTypes = {
   stop: PropTypes.bool.isRequired,
   loadingTickets: PropTypes.func.isRequired,
   changingVisibleTickets: PropTypes.func.isRequired,
-  calculatingTotalPages: PropTypes.func.isRequired,
   changedPage: PropTypes.func.isRequired,
   tickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
   visibleTickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
