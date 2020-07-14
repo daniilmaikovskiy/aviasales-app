@@ -22,12 +22,12 @@ $switch-changed-color: #ffffff;
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
   }
 
   &:focus {
-    transform: scale(1.03);
+    transform: scale(1.02);
   }
 
   @media (max-width: 419px) {

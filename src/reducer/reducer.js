@@ -38,11 +38,7 @@ export default function reducer(
 ) {
   switch (action.type) {
     case 'SWITCH_BTN_PRESSED':
-      if (state.switchKeys.some((el) => el === action.name)) {
-        return state;
-      }
-
-      return { ...state, switchKeys: [action.name] };
+      return { ...state, switchKeys: action.switchKeys };
     case 'TRANSFERS_CHECKBOX_CHECKED': {
       const transfersFilter = [...state.transfersFilter];
       const index = transfersFilter.indexOf(action.name);

@@ -1,10 +1,20 @@
 import loadingTickets from './loading-tickets/loading-tickets';
 import loadingSearchId from './loading-search-id/loading-search-id';
 
-const switchBtnPressed = (name) => {
+const pressedSwitchBtn = (switchKeys) => {
   return {
     type: 'SWITCH_BTN_PRESSED',
-    name,
+    switchKeys,
+  };
+};
+
+const pressingSwitchBtn = (name) => {
+  return (dispatch, getState) => {
+    const { switchKeys } = getState();
+
+    if (!switchKeys.some((el) => el === name)) {
+      dispatch(pressedSwitchBtn([name]));
+    }
   };
 };
 
@@ -16,7 +26,7 @@ const transfersCheckboxChecked = (name) => {
 };
 
 const actions = {
-  switchBtnPressed,
+  pressingSwitchBtn,
   transfersCheckboxChecked,
   loadingSearchId,
   loadingTickets,

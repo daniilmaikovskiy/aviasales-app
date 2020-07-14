@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { btn, left, right, changed } from './switch-button.module.scss';
 import actions from '../../actions/actions';
 
-const SwitchButton = ({ name, text, orientation, switchKeys, switchBtnPressed }) => {
+const SwitchButton = ({ name, text, orientation, switchKeys, pressingSwitchBtn }) => {
   const classes = [btn];
 
   if (orientation === 'left') {
@@ -22,7 +22,7 @@ const SwitchButton = ({ name, text, orientation, switchKeys, switchBtnPressed })
       type="button"
       name={name}
       className={classes.join(' ')}
-      onClick={() => switchBtnPressed(name)}
+      onClick={() => pressingSwitchBtn(name)}
     >
       {text}
     </button>
@@ -34,7 +34,7 @@ SwitchButton.propTypes = {
   name: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   orientation: PropTypes.string.isRequired,
-  switchBtnPressed: PropTypes.func.isRequired,
+  pressingSwitchBtn: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
