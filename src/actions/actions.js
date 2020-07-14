@@ -1,4 +1,5 @@
 import loadingTickets from './loading-tickets/loading-tickets';
+import loadingSearchId from './loading-search-id/loading-search-id';
 
 const switchBtnPressed = (name) => {
   return {
@@ -14,36 +15,10 @@ const transfersCheckboxChecked = (name) => {
   };
 };
 
-const receivedSearchId = (id) => {
-  return {
-    type: 'RECEIVED_SEARCH_ID',
-    payload: id,
-  };
-};
-
-const errorOfReceivingSearchId = (message) => {
-  return {
-    type: 'ERROR_OF_RECEIVING_SEARCH_ID',
-    message,
-  };
-};
-
-const loadedSearchId = () => ({ type: 'LOADED_SEARCH_ID' });
-
-const startOfLoadingSearchId = (aviasalesService) => {
-  return (dispatch) => {
-    aviasalesService
-      .getSearchId()
-      .then((searchId) => dispatch(receivedSearchId(searchId)))
-      .catch((error) => dispatch(errorOfReceivingSearchId(error.message)))
-      .finally(() => dispatch(loadedSearchId()));
-  };
-};
-
 const actions = {
   switchBtnPressed,
   transfersCheckboxChecked,
-  startOfLoadingSearchId,
+  loadingSearchId,
   loadingTickets,
 };
 

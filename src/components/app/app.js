@@ -9,11 +9,11 @@ import actions from '../../actions/actions';
 import ErrorAlert from '../error-alert';
 import Spinner from '../spinner';
 
-const App = ({ querySearchId, startOfLoadingSearchId }) => {
+const App = ({ querySearchId, loadingSearchId }) => {
   const aviasalesService = useContext(AviasalesServiceContext);
 
   useEffect(() => {
-    startOfLoadingSearchId(aviasalesService);
+    loadingSearchId(aviasalesService);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -34,7 +34,7 @@ const App = ({ querySearchId, startOfLoadingSearchId }) => {
 };
 
 App.propTypes = {
-  startOfLoadingSearchId: PropTypes.func.isRequired,
+  loadingSearchId: PropTypes.func.isRequired,
   querySearchId: PropTypes.shape({
     id: PropTypes.string.isRequired,
     loading: PropTypes.bool.isRequired,
