@@ -28,6 +28,10 @@ export default function reducer(
       error: false,
       errorMessage: '',
     },
+    queryTickets: {
+      stop: false,
+      data: [],
+    },
   },
   action
 ) {
@@ -69,6 +73,20 @@ export default function reducer(
     }
     case 'LOADED_SEARCH_ID':
       return { ...state, querySearchId: { ...state.querySearchId, loading: false } };
+    case 'RECEIVED_TICKETS':
+      return {
+        ...state,
+        queryTickets: {
+          ...state.queryTickets,
+          stop: action.payload.stop,
+          data: [...state.queryTickets.data, ...action.payload.tickets],
+        },
+      };
+    case 'ERROR_OF_RECEIVING_TICKETS':
+      return {
+        ...state,
+        queryTickets: { ...state.queryTickets, data: [...state.queryTickets.data] },
+      };
     default:
       return state;
   }

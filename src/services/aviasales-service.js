@@ -6,4 +6,8 @@ export default class AviasalesService {
       .then((response) => response.json())
       .then(({ searchId }) => searchId);
   };
+
+  getTickets = (searchId) => {
+    return fetch(`${this.url}/tickets?searchId=${searchId}`).then((response) => response.json());
+  };
 }
