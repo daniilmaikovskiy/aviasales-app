@@ -15,8 +15,7 @@ const Tickets = ({
   visibleTickets,
   stop,
   loadingTickets,
-  changingVisibleTickets,
-  changedPage,
+  changingPage,
   totalPages,
   page,
 }) => {
@@ -29,11 +28,6 @@ const Tickets = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tickets]);
 
-  useEffect(() => {
-    changingVisibleTickets();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
-
   const ticketsArray = visibleTickets.map(({ price, img, to, from, id }) => {
     return <Ticket key={id} price={price} img={img} to={to} from={from} />;
   });
@@ -43,13 +37,7 @@ const Tickets = ({
       <Switch />
       <div className={classes.ticketArray}>{tickets.length ? ticketsArray : <Spinner />}</div>
       <div className={classes.pagination}>
-        <PageController
-          total={totalPages}
-          onChange={(e) => {
-            changedPage(e);
-          }}
-          current={page}
-        />
+        <PageController total={totalPages} onChange={changingPage} current={page} />
       </div>
     </div>
   );
@@ -58,8 +46,7 @@ const Tickets = ({
 Tickets.propTypes = {
   stop: PropTypes.bool.isRequired,
   loadingTickets: PropTypes.func.isRequired,
-  changingVisibleTickets: PropTypes.func.isRequired,
-  changedPage: PropTypes.func.isRequired,
+  changingPage: PropTypes.func.isRequired,
   tickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
   visibleTickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
   totalPages: PropTypes.number.isRequired,
