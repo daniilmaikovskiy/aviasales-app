@@ -31,6 +31,7 @@ export default function reducer(
     queryTickets: {
       stop: false,
       data: [],
+      maxId: 1,
     },
   },
   action
@@ -80,6 +81,7 @@ export default function reducer(
           ...state.queryTickets,
           stop: action.stop,
           data: [...state.queryTickets.data, ...action.tickets],
+          maxId: action.maxId,
         },
       };
     case 'ERROR_OF_RECEIVING_TICKETS':

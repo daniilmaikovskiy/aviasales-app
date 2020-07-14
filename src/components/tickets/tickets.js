@@ -15,10 +15,10 @@ const Tickets = ({ searchId, tickets, stop, loadingTickets }) => {
       loadingTickets(aviasalesService, searchId);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tickets, stop]);
+  }, [tickets]);
 
-  const visibleTickets = tickets.slice(0, 5).map(({ price, img, to, from }) => {
-    return <Ticket price={price} img={img} to={to} from={from} />;
+  const visibleTickets = tickets.slice(0, 5).map(({ price, img, to, from, id }) => {
+    return <Ticket key={id} price={price} img={img} to={to} from={from} />;
   });
 
   return (
