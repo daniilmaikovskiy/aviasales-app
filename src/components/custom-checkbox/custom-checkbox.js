@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import classes from './custom-checkbox.module.scss';
 import actions from '../../actions/actions';
 
-const CustomCheckbox = ({ className, name, text, transfersFilter, transfersCheckboxChecked }) => {
+const CustomCheckbox = ({ className, name, text, transfersFilter, checkingTransfersCheckbox }) => {
   const checked = transfersFilter[0] === 'all' || transfersFilter.some((el) => el === name);
 
   return (
@@ -13,7 +13,7 @@ const CustomCheckbox = ({ className, name, text, transfersFilter, transfersCheck
         className={classes.oldCheckbox}
         type="checkbox"
         checked={checked}
-        onChange={() => transfersCheckboxChecked(name)}
+        onChange={() => checkingTransfersCheckbox(name)}
       />
       <span className={classes.checkbox} />
       <span className={classes.text}>{text}</span>
@@ -26,7 +26,7 @@ CustomCheckbox.propTypes = {
   text: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   transfersFilter: PropTypes.arrayOf(String).isRequired,
-  transfersCheckboxChecked: PropTypes.func.isRequired,
+  checkingTransfersCheckbox: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
