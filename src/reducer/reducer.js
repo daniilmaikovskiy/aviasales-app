@@ -12,6 +12,11 @@ export default function reducer(
       stop: false,
       data: [],
       maxId: 1,
+      visibleTickets: [],
+    },
+    pagination: {
+      page: 1,
+      totalPages: 0,
     },
   },
   action
@@ -48,6 +53,15 @@ export default function reducer(
         ...state,
         queryTickets: { ...state.queryTickets, data: [...state.queryTickets.data] },
       };
+    case 'CHANGED_VISIBLE_TICKETS':
+      return {
+        ...state,
+        queryTickets: { ...state.queryTickets, visibleTickets: [...action.tickets] },
+      };
+    case 'CALCULATED_TOTAL_PAGES':
+      return { ...state, pagination: { ...state.pagination, totalPages: action.totalPages } };
+    case 'CHANGED_PAGE':
+      return { ...state, pagination: { ...state.pagination, page: action.page } };
     default:
       return state;
   }

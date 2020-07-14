@@ -11,10 +11,10 @@ const receivedTickets = (tickets, stop, maxId) => {
 
 const errorOfReceivingTickets = () => ({ type: 'ERROR_OF_RECEIVING_TICKETS' });
 
-const loadingTickets = (aviasalesService, searchId) => {
+const loadingTickets = (aviasalesService) => {
   return (dispatch, getState) => {
     aviasalesService
-      .getTickets(searchId)
+      .getTickets(getState().querySearchId.id)
       .then((data) => {
         const { maxId } = getState().queryTickets;
         const preparedTickets = data.tickets.map((ticket, i) => prepareTicket(ticket, maxId + i));

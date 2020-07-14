@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import customPropTypes from '../../custom-prop-types';
 import classes from './ticket.module.scss';
 import Picture from '../picture';
 
@@ -45,22 +46,6 @@ export default function Ticket({ price, img, to, from }) {
 Ticket.propTypes = {
   price: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
-
-  to: PropTypes.shape({
-    origin: PropTypes.string.isRequired,
-    destination: PropTypes.string.isRequired,
-    timeInterval: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    transfersCount: PropTypes.string.isRequired,
-    transfers: PropTypes.string.isRequired,
-  }).isRequired,
-
-  from: PropTypes.shape({
-    origin: PropTypes.string.isRequired,
-    destination: PropTypes.string.isRequired,
-    timeInterval: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    transfersCount: PropTypes.string.isRequired,
-    transfers: PropTypes.string.isRequired,
-  }).isRequired,
+  to: customPropTypes.ticketSegment.isRequired,
+  from: customPropTypes.ticketSegment.isRequired,
 };
