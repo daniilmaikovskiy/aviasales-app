@@ -18,6 +18,7 @@ const Tickets = ({
   changingPage,
   totalPages,
   page,
+  runningSortingTickets,
 }) => {
   const aviasalesService = useContext(AviasalesServiceContext);
 
@@ -31,11 +32,12 @@ const Tickets = ({
   const ticketsArray = visibleTickets.map(({ price, img, to, from, id }) => {
     return <Ticket key={id} price={price} img={img} to={to} from={from} />;
   });
+  const ticketsLoading = !tickets.length || runningSortingTickets;
 
   return (
     <div className={classes.wrapper}>
       <Switch />
-      <div className={classes.ticketArray}>{tickets.length ? ticketsArray : <Spinner />}</div>
+      <div className={classes.ticketArray}>{ticketsLoading ? <Spinner /> : ticketsArray}</div>
       <div className={classes.pagination}>
         <PageController total={totalPages} onChange={changingPage} current={page} />
       </div>
@@ -51,6 +53,7 @@ Tickets.propTypes = {
   visibleTickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
   totalPages: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
+  runningSortingTickets: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -60,6 +63,7 @@ const mapStateToProps = (state) => {
     visibleTickets: state.queryTickets.visibleTickets,
     totalPages: state.pagination.totalPages,
     page: state.pagination.page,
+    runningSortingTickets: state.runningSortingTickets,
   };
 };
 

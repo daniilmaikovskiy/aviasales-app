@@ -1,3 +1,5 @@
+import sortingTickets from '../sorting-tickets/sorting-tickets';
+
 const pressedSwitchBtn = (switchKeys) => {
   return {
     type: 'PRESSED_SWITCH_BTN',
@@ -11,6 +13,7 @@ const pressingSwitchBtn = (name) => {
 
     if (!switchKeys.some((el) => el === name)) {
       dispatch(pressedSwitchBtn([name]));
+      dispatch(sortingTickets());
     }
   };
 };

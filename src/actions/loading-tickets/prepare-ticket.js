@@ -68,8 +68,9 @@ const prepareTicket = ({ price, carrier, segments }, id) => {
     transfersCount: getTransfersCountString(segments[1].stops.length),
     transfers: segments[1].stops.join(', '),
   };
+  const fullDuration = segments[0].duration + segments[1].duration;
 
-  return { price, img, to, from, id };
+  return { price, img, to, from, id, fullDuration };
 };
 
 export default prepareTicket;

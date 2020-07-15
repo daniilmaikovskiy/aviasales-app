@@ -1,7 +1,8 @@
 export default function reducer(
   state = {
-    switchKeys: ['cheapest'],
+    switchKeys: [],
     transfersFilter: [],
+    runningSortingTickets: false,
     querySearchId: {
       id: '',
       loading: true,
@@ -62,6 +63,12 @@ export default function reducer(
       return { ...state, pagination: { ...state.pagination, totalPages: action.totalPages } };
     case 'CHANGED_PAGE':
       return { ...state, pagination: { ...state.pagination, page: action.page } };
+    case 'SORTED_TICKETS':
+      return { ...state, queryTickets: { ...state.queryTickets, data: action.tickets } };
+    case 'STARTED_SORTING_TICKETS':
+      return { ...state, runningSortingTickets: true };
+    case 'ENDED_SORTING_TICKETS':
+      return { ...state, runningSortingTickets: false };
     default:
       return state;
   }
