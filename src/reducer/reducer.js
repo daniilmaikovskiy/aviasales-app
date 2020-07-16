@@ -54,11 +54,11 @@ export default function reducer(
         ...state,
         queryTickets: { ...state.queryTickets, stop: true, error: true },
       };
-    case 'ERROR_500_OF_RECEIVING_TICKETS':
-      return {
-        ...state,
-        queryTickets: { ...state.queryTickets, stop: true, error: true },
-      };
+    // case 'ERROR_500_OF_RECEIVING_TICKETS':
+    //   return {
+    //     ...state,
+    //     queryTickets: { ...state.queryTickets, stop: true, error: true },
+    //   };
     case 'CHANGED_VISIBLE_TICKETS':
       return {
         ...state,
