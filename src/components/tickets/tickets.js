@@ -18,21 +18,18 @@ const Tickets = ({
   changingPage,
   totalPages,
   page,
-  runningSortingTickets,
 }) => {
   const aviasalesService = useContext(AviasalesServiceContext);
 
   useEffect(() => {
-    if (!stop) {
-      loadingTickets(aviasalesService);
-    }
+    loadingTickets(aviasalesService);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tickets]);
+  }, []);
 
-  const ticketsArray = visibleTickets.map(({ price, img, to, from, id }) => {
-    return <Ticket key={id} price={price} img={img} to={to} from={from} />;
+  const ticketsArray = visibleTickets.map(({ price, carrier, to, from, id }) => {
+    return <Ticket key={id} price={price} carrier={carrier} to={to} from={from} />;
   });
-  const ticketsLoading = !tickets.length || runningSortingTickets;
+  const ticketsLoading = !tickets.length || (page !== 1 && !stop);
 
   return (
     <div className={classes.wrapper}>
@@ -53,7 +50,6 @@ Tickets.propTypes = {
   visibleTickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
   totalPages: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
-  runningSortingTickets: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -63,7 +59,6 @@ const mapStateToProps = (state) => {
     visibleTickets: state.queryTickets.visibleTickets,
     totalPages: state.pagination.totalPages,
     page: state.pagination.page,
-    runningSortingTickets: state.runningSortingTickets,
   };
 };
 

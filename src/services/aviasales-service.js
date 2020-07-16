@@ -8,6 +8,12 @@ export default class AviasalesService {
   };
 
   getTickets = (searchId) => {
-    return fetch(`${this.url}/tickets?searchId=${searchId}`).then((response) => response.json());
+    return fetch(`${this.url}/tickets?searchId=${searchId}`).then((response) => {
+      if (response.status === 404) {
+        throw new Error('404');
+      }
+
+      return response.json();
+    });
   };
 }

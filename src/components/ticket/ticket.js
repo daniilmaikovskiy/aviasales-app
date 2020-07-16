@@ -4,13 +4,13 @@ import customPropTypes from '../../custom-prop-types';
 import classes from './ticket.module.scss';
 import Picture from '../picture';
 
-export default function Ticket({ price, img, to, from }) {
+export default function Ticket({ price, carrier, to, from }) {
   return (
     <div className={classes.wrapper}>
       <div className={classes.cost}>
         <div className={classes.cell}>{price} P</div>
       </div>
-      <Picture className={classes.logo} src={img} />
+      <Picture className={classes.logo} src={`https://pics.avs.io/99/36/${carrier}.png`} />
       <div className={classes.voyageCell}>
         <span className={classes.label}>
           {to.origin} - {to.destination}
@@ -23,7 +23,7 @@ export default function Ticket({ price, img, to, from }) {
       </div>
       <div className={classes.voyageCell}>
         <span className={classes.label}>{to.transfersCount}</span>
-        <span className={classes.text}>{to.transfers}</span>
+        <span className={classes.text}>{to.transfers.join(', ')}</span>
       </div>
       <div className={classes.voyageCell}>
         <span className={classes.label}>
@@ -37,7 +37,7 @@ export default function Ticket({ price, img, to, from }) {
       </div>
       <div className={classes.voyageCell}>
         <span className={classes.label}>{from.transfersCount}</span>
-        <span className={classes.text}>{from.transfers}</span>
+        <span className={classes.text}>{from.transfers.join(', ')}</span>
       </div>
     </div>
   );
@@ -45,7 +45,7 @@ export default function Ticket({ price, img, to, from }) {
 
 Ticket.propTypes = {
   price: PropTypes.number.isRequired,
-  img: PropTypes.string.isRequired,
+  carrier: PropTypes.string.isRequired,
   to: customPropTypes.ticketSegment.isRequired,
   from: customPropTypes.ticketSegment.isRequired,
 };

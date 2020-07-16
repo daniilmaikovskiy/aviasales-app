@@ -6,12 +6,12 @@ const ticketSegment = PropTypes.shape({
   timeInterval: PropTypes.string.isRequired,
   duration: PropTypes.string.isRequired,
   transfersCount: PropTypes.string.isRequired,
-  transfers: PropTypes.string.isRequired,
+  transfers: PropTypes.arrayOf(String).isRequired,
 });
 
 const ticket = PropTypes.shape({
   price: PropTypes.number.isRequired,
-  img: PropTypes.string.isRequired,
+  carrier: PropTypes.string.isRequired,
   to: ticketSegment.isRequired,
   from: ticketSegment.isRequired,
 });

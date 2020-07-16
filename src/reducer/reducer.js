@@ -1,8 +1,7 @@
 export default function reducer(
   state = {
-    switchKeys: [],
+    switchKeys: ['cheapest'],
     transfersFilter: [],
-    runningSortingTickets: false,
     querySearchId: {
       id: '',
       loading: true,
@@ -49,10 +48,10 @@ export default function reducer(
           maxId: action.maxId,
         },
       };
-    case 'ERROR_OF_RECEIVING_TICKETS':
+    case 'ERROR_404_OF_RECEIVING_TICKETS':
       return {
         ...state,
-        queryTickets: { ...state.queryTickets, data: [...state.queryTickets.data] },
+        queryTickets: { ...state.queryTickets, stop: true },
       };
     case 'CHANGED_VISIBLE_TICKETS':
       return {
@@ -65,10 +64,8 @@ export default function reducer(
       return { ...state, pagination: { ...state.pagination, page: action.page } };
     case 'SORTED_TICKETS':
       return { ...state, queryTickets: { ...state.queryTickets, data: action.tickets } };
-    case 'STARTED_SORTING_TICKETS':
-      return { ...state, runningSortingTickets: true };
-    case 'ENDED_SORTING_TICKETS':
-      return { ...state, runningSortingTickets: false };
+    case 'SORTED_TICKETS_FRAGMENT':
+      return { ...state, queryTickets: { ...state.queryTickets, data: action.tickets } };
     default:
       return state;
   }

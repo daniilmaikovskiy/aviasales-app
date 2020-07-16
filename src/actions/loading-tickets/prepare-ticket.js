@@ -1,10 +1,3 @@
-const createImgUrl = (carrier) => {
-  const imagesUrl = 'https://pics.avs.io/99/36/';
-  const imagesExtension = 'png';
-
-  return `${imagesUrl}${carrier}.${imagesExtension}`;
-};
-
 const getTransfersCountString = (value) => {
   switch (value) {
     case 0:
@@ -51,14 +44,13 @@ const prepareTicket = ({ price, carrier, segments }, id) => {
   const timeIntervalTo = `${formatDate(dateObjTo)} - ${formatDate(dateObjToPlusDuration)}`;
   const timeIntervalFrom = `${formatDate(dateObjFrom)} - ${formatDate(dateObjFromPlusDuration)}`;
 
-  const img = createImgUrl(carrier);
   const to = {
     origin: segments[0].origin,
     destination: segments[0].destination,
     timeInterval: timeIntervalTo,
     duration: formatDuration(segments[0].duration),
     transfersCount: getTransfersCountString(segments[0].stops.length),
-    transfers: segments[0].stops.join(', '),
+    transfers: segments[0].stops,
   };
   const from = {
     origin: segments[1].origin,
@@ -66,11 +58,11 @@ const prepareTicket = ({ price, carrier, segments }, id) => {
     timeInterval: timeIntervalFrom,
     duration: formatDuration(segments[1].duration),
     transfersCount: getTransfersCountString(segments[1].stops.length),
-    transfers: segments[1].stops.join(', '),
+    transfers: segments[1].stops,
   };
   const fullDuration = segments[0].duration + segments[1].duration;
 
-  return { price, img, to, from, id, fullDuration };
+  return { price, carrier, to, from, id, fullDuration };
 };
 
 export default prepareTicket;

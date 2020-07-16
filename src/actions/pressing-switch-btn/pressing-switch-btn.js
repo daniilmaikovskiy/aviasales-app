@@ -1,4 +1,5 @@
 import sortingTickets from '../sorting-tickets/sorting-tickets';
+import changingPage from '../changing-page/changing-page';
 
 const pressedSwitchBtn = (switchKeys) => {
   return {
@@ -14,6 +15,7 @@ const pressingSwitchBtn = (name) => {
     if (!switchKeys.some((el) => el === name)) {
       dispatch(pressedSwitchBtn([name]));
       dispatch(sortingTickets());
+      dispatch(changingPage(1));
     }
   };
 };

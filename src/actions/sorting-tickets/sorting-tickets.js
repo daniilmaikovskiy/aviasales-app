@@ -1,28 +1,4 @@
-import changingVisibleTickets from '../changing-visible-tickets/changing-visible-tickets';
-
-const comparePrice = (a, b) => {
-  if (a.price < b.price) {
-    return -1;
-  }
-
-  if (a.price > b.price) {
-    return 1;
-  }
-
-  return 0;
-};
-
-const compareDuration = (a, b) => {
-  if (a.fullDuration < b.fullDuration) {
-    return -1;
-  }
-
-  if (a.fullDuration > b.fullDuration) {
-    return 1;
-  }
-
-  return 0;
-};
+import { comparePrice, compareDuration } from '../helper';
 
 const sortedTickets = (tickets) => {
   return {
@@ -31,16 +7,11 @@ const sortedTickets = (tickets) => {
   };
 };
 
-const startedSortingTickets = () => ({ type: 'STARTED_SORTING_TICKETS' });
-const endedSortingTickets = () => ({ type: 'ENDED_SORTING_TICKETS' });
-
 const sortingTickets = () => {
   return (dispatch, getState) => {
-    const switchKeys = [...getState().switchKeys];
+    const { switchKeys } = getState();
 
     if (switchKeys.length) {
-      dispatch(startedSortingTickets());
-
       const tickets = [...getState().queryTickets.data];
 
       if (switchKeys.some((el) => el === 'cheapest')) {
@@ -52,8 +23,6 @@ const sortingTickets = () => {
       }
 
       dispatch(sortedTickets(tickets));
-      dispatch(changingVisibleTickets());
-      dispatch(endedSortingTickets());
     }
   };
 };
