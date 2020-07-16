@@ -12,6 +12,9 @@ export default class AviasalesService {
       if (response.status === 404) {
         throw new Error('404');
       }
+      if (response.status === 500) {
+        throw new Error('500');
+      }
 
       return response.json();
     });

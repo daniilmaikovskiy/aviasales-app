@@ -9,19 +9,6 @@
   }
 }
 
-.ticketArray {
-  position: relative;
-  min-height: 184px;
-}
-
-.ticketArray div {
-  margin-bottom: 20px;
-
-  @media (max-width: 419px) {
-    margin-bottom: 10px;
-  }
-}
-
 .pagination {
   display: flex;
   justify-content: center;

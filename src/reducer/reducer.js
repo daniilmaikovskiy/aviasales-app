@@ -10,6 +10,7 @@ export default function reducer(
     },
     queryTickets: {
       stop: false,
+      error: false,
       data: [],
       maxId: 1,
       visibleTickets: [],
@@ -51,7 +52,12 @@ export default function reducer(
     case 'ERROR_404_OF_RECEIVING_TICKETS':
       return {
         ...state,
-        queryTickets: { ...state.queryTickets, stop: true },
+        queryTickets: { ...state.queryTickets, stop: true, error: true },
+      };
+    case 'ERROR_500_OF_RECEIVING_TICKETS':
+      return {
+        ...state,
+        queryTickets: { ...state.queryTickets, stop: true, error: true },
       };
     case 'CHANGED_VISIBLE_TICKETS':
       return {

@@ -15,6 +15,8 @@ const receivedTickets = (tickets, stop, maxId) => {
 
 const error404OfReceivingTickets = () => ({ type: 'ERROR_404_OF_RECEIVING_TICKETS' });
 
+const error500OfReceivingTickets = () => ({ type: 'ERROR_500_OF_RECEIVING_TICKETS' });
+
 const loadingTickets = (aviasalesService) => {
   const loadingTicketsCallback = (dispatch, getState) => {
     aviasalesService
@@ -35,7 +37,7 @@ const loadingTickets = (aviasalesService) => {
         dispatch(calculatingTotalPages());
 
         if (!data.stop) {
-          setTimeout(loadingTicketsCallback, 0, dispatch, getState);
+          setTimeout(loadingTicketsCallback, 100, dispatch, getState);
         }
       })
       .catch((error) => {
@@ -43,8 +45,12 @@ const loadingTickets = (aviasalesService) => {
           dispatch(error404OfReceivingTickets());
           return;
         }
+        if (error.message === '500') {
+          dispatch(error500OfReceivingTickets());
+          return;
+        }
 
-        setTimeout(loadingTicketsCallback, 0, dispatch, getState);
+        setTimeout(loadingTicketsCallback, 100, dispatch, getState);
       });
   };
 
