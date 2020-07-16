@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const ticketSegment = PropTypes.shape({
+const preparedTicketSegment = PropTypes.shape({
   origin: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
   timeInterval: PropTypes.string.isRequired,
@@ -9,16 +9,35 @@ const ticketSegment = PropTypes.shape({
   transfers: PropTypes.arrayOf(String).isRequired,
 });
 
+const ticketSegment = PropTypes.shape({
+  origin: PropTypes.string.isRequired,
+  destination: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  stops: PropTypes.arrayOf(String).isRequired,
+  duration: PropTypes.number.isRequired,
+});
+
 const ticket = PropTypes.shape({
+  id: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
   carrier: PropTypes.string.isRequired,
-  to: ticketSegment.isRequired,
-  from: ticketSegment.isRequired,
+  fullDuration: PropTypes.number.isRequired,
+  segments: PropTypes.arrayOf(ticketSegment).isRequired,
+});
+
+const preparedTicket = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  carrier: PropTypes.string.isRequired,
+  to: preparedTicketSegment.isRequired,
+  from: preparedTicketSegment.isRequired,
 });
 
 const customPropTypes = {
+  preparedTicketSegment,
   ticketSegment,
   ticket,
+  preparedTicket,
 };
 
 export default customPropTypes;

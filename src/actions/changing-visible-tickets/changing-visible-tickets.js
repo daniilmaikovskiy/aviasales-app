@@ -1,4 +1,5 @@
 import settings from '../settings';
+import prepareTicket from './prepare-ticket';
 
 const changedVisibleTickets = (tickets) => {
   return {
@@ -10,12 +11,17 @@ const changedVisibleTickets = (tickets) => {
 const changingVisibleTickets = () => {
   return (dispatch, getState) => {
     const { queryTickets, pagination } = getState();
+
     const visibleTickets = queryTickets.data.slice(
       settings.PAGE_ITEMS_NUMBER * (pagination.page - 1),
       settings.PAGE_ITEMS_NUMBER * pagination.page
     );
 
-    dispatch(changedVisibleTickets(visibleTickets));
+    const preparedTickets = visibleTickets.map((ticket, i) =>
+      prepareTicket(ticket, queryTickets.maxId + i)
+    );
+
+    dispatch(changedVisibleTickets(preparedTickets));
   };
 };
 

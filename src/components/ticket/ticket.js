@@ -46,6 +46,6 @@ export default function Ticket({ price, carrier, to, from }) {
 Ticket.propTypes = {
   price: PropTypes.number.isRequired,
   carrier: PropTypes.string.isRequired,
-  to: customPropTypes.ticketSegment.isRequired,
-  from: customPropTypes.ticketSegment.isRequired,
+  to: customPropTypes.preparedTicketSegment.isRequired,
+  from: customPropTypes.preparedTicketSegment.isRequired,
 };

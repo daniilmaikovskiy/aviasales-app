@@ -49,7 +49,7 @@ TicketArray.propTypes = {
   error: PropTypes.bool.isRequired,
   loadingTickets: PropTypes.func.isRequired,
   tickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
-  visibleTickets: PropTypes.arrayOf(customPropTypes.ticket).isRequired,
+  visibleTickets: PropTypes.arrayOf(customPropTypes.preparedTicket).isRequired,
   page: PropTypes.number.isRequired,
 };
 

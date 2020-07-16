@@ -34,7 +34,7 @@ const calculateNewDate = (dateObj, durationInMinutes) => {
   return result;
 };
 
-const prepareTicket = ({ price, carrier, segments }, id) => {
+const prepareTicket = ({ price, carrier, segments, id }) => {
   const dateObjTo = new Date(segments[0].date);
   const dateObjFrom = new Date(segments[1].date);
 
@@ -60,9 +60,8 @@ const prepareTicket = ({ price, carrier, segments }, id) => {
     transfersCount: getTransfersCountString(segments[1].stops.length),
     transfers: segments[1].stops,
   };
-  const fullDuration = segments[0].duration + segments[1].duration;
 
-  return { price, carrier, to, from, id, fullDuration };
+  return { price, carrier, to, from, id };
 };
 
 export default prepareTicket;

@@ -1,4 +1,3 @@
-import prepareTicket from './prepare-ticket';
 import calculatingTotalPages from '../calculating-total-pages/calculating-total-pages';
 import sortingTickets from '../sorting-tickets/sorting-tickets';
 import sortingTicketsFragment from '../sorting-tickets-fragment/sorting-tickets-fragment';
@@ -23,9 +22,16 @@ const loadingTickets = (aviasalesService) => {
       .getTickets(getState().querySearchId.id)
       .then((data) => {
         const { maxId } = getState().queryTickets;
-        const preparedTickets = data.tickets.map((ticket, i) => prepareTicket(ticket, maxId + i));
 
-        dispatch(receivedTickets(preparedTickets, data.stop, maxId + preparedTickets.length));
+        const tickets = data.tickets.map((ticket, i) => {
+          return {
+            ...ticket,
+            id: maxId + i,
+            fullDuration: ticket.segments[0].duration + ticket.segments[1].duration,
+          };
+        });
+
+        dispatch(receivedTickets(tickets, data.stop, maxId + tickets.length));
 
         if (data.stop) {
           dispatch(sortingTickets());
