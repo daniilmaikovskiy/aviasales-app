@@ -14,6 +14,7 @@ export default function reducer(
       data: [],
       maxId: 1,
       visibleTickets: [],
+      filteredTickets: [],
     },
     pagination: {
       page: 1,
@@ -72,6 +73,8 @@ export default function reducer(
       return { ...state, queryTickets: { ...state.queryTickets, data: action.tickets } };
     case 'SORTED_TICKETS_FRAGMENT':
       return { ...state, queryTickets: { ...state.queryTickets, data: action.tickets } };
+    case 'IS_FILTERED_TICKETS':
+      return { ...state, queryTickets: { ...state.queryTickets, filteredTickets: action.tickets } };
     default:
       return state;
   }

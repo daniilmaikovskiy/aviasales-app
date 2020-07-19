@@ -1,9 +1,5 @@
-const ALL_TRANSFERS_FILTER_VALUES = [
-  'no-transfers',
-  'one-transfer',
-  'two-transfers',
-  'three-transfers',
-];
+import { ALL_TRANSFERS_FILTER_VALUES } from '../settings';
+import filteringTickets from '../filtering-tickets/filtering-tickets';
 
 const isAll = (array) => {
   return (
@@ -47,6 +43,7 @@ const checkingTransfersCheckbox = (name) => {
     }
 
     dispatch(checkedTransfersCheckbox(transfersFilter));
+    dispatch(filteringTickets());
   };
 };
 

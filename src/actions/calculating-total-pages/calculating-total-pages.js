@@ -1,4 +1,4 @@
-import settings from '../settings';
+import { PAGE_ITEMS_NUMBER } from '../settings';
 
 const calculatedTotalPages = (totalPages) => {
   return {
@@ -9,8 +9,8 @@ const calculatedTotalPages = (totalPages) => {
 
 const calculatingTotalPages = () => {
   return (dispatch, getState) => {
-    const { data } = getState().queryTickets;
-    const totalPages = Math.ceil(data.length / settings.PAGE_ITEMS_NUMBER);
+    const { filteredTickets } = getState().queryTickets;
+    const totalPages = Math.ceil(filteredTickets.length / PAGE_ITEMS_NUMBER);
 
     dispatch(calculatedTotalPages(totalPages));
   };

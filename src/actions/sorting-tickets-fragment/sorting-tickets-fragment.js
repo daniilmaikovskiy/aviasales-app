@@ -1,4 +1,4 @@
-import settings from '../settings';
+import { PAGE_ITEMS_NUMBER } from '../settings';
 import { comparePrice, compareDuration } from '../helper';
 
 const sortFragment = (arr, compareFn) => {
@@ -21,7 +21,7 @@ const sortFragment = (arr, compareFn) => {
       return accElement;
     });
 
-    if (newAcc.length < settings.PAGE_ITEMS_NUMBER) {
+    if (newAcc.length < PAGE_ITEMS_NUMBER) {
       newAcc.push(element);
     }
 

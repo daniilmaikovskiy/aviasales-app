@@ -1,7 +1,7 @@
 import calculatingTotalPages from '../calculating-total-pages/calculating-total-pages';
 import sortingTickets from '../sorting-tickets/sorting-tickets';
 import sortingTicketsFragment from '../sorting-tickets-fragment/sorting-tickets-fragment';
-import changingVisibleTickets from '../changing-visible-tickets/changing-visible-tickets';
+import filteringTickets from '../filtering-tickets/filtering-tickets';
 
 const receivedTickets = (tickets, stop, maxId) => {
   return {
@@ -39,11 +39,11 @@ const loadingTickets = (aviasalesService) => {
           dispatch(sortingTicketsFragment());
         }
 
-        dispatch(changingVisibleTickets());
+        dispatch(filteringTickets());
         dispatch(calculatingTotalPages());
 
         if (!data.stop) {
-          setTimeout(loadingTicketsCallback, 50, dispatch, getState);
+          setTimeout(loadingTicketsCallback, 0, dispatch, getState);
         }
       })
       .catch((error) => {
