@@ -1,7 +1,7 @@
 export default function reducer(
   state = {
     switchKeys: ['cheapest'],
-    transfersFilter: ['no-transfers'],
+    transfersFilter: ['all'],
     querySearchId: {
       id: '',
       loading: true,
