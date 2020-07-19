@@ -1,6 +1,4 @@
 import { ALL_TRANSFERS_FILTER_VALUES } from '../settings';
-import changingVisibleTickets from '../changing-visible-tickets/changing-visible-tickets';
-import calculatingTotalPages from '../calculating-total-pages/calculating-total-pages';
 
 const translateTransfersFilterToNumbers = (transfersFilter) => {
   if (transfersFilter[0] === 'all') {
@@ -49,8 +47,6 @@ const filteringTickets = () => {
     });
 
     dispatch(isfilteredTickets(filteredTickets));
-    dispatch(changingVisibleTickets());
-    dispatch(calculatingTotalPages());
   };
 };
 
