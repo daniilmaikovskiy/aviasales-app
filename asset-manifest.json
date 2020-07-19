@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/aviasales-app/static/css/main.693b7d97.chunk.css",
-    "main.js": "/aviasales-app/static/js/main.a778d630.chunk.js",
-    "main.js.map": "/aviasales-app/static/js/main.a778d630.chunk.js.map",
+    "main.js": "/aviasales-app/static/js/main.c9912621.chunk.js",
+    "main.js.map": "/aviasales-app/static/js/main.c9912621.chunk.js.map",
     "runtime-main.js": "/aviasales-app/static/js/runtime-main.1aaf4800.js",
     "runtime-main.js.map": "/aviasales-app/static/js/runtime-main.1aaf4800.js.map",
     "static/css/2.8d86f356.chunk.css": "/aviasales-app/static/css/2.8d86f356.chunk.css",
-    "static/js/2.30a740bf.chunk.js": "/aviasales-app/static/js/2.30a740bf.chunk.js",
-    "static/js/2.30a740bf.chunk.js.map": "/aviasales-app/static/js/2.30a740bf.chunk.js.map",
+    "static/js/2.7b3f9f95.chunk.js": "/aviasales-app/static/js/2.7b3f9f95.chunk.js",
+    "static/js/2.7b3f9f95.chunk.js.map": "/aviasales-app/static/js/2.7b3f9f95.chunk.js.map",
     "index.html": "/aviasales-app/index.html",
-    "precache-manifest.bbce9c7870c70498798adb612ee513b1.js": "/aviasales-app/precache-manifest.bbce9c7870c70498798adb612ee513b1.js",
+    "precache-manifest.36c806d38e6536f252b4d732791843a2.js": "/aviasales-app/precache-manifest.36c806d38e6536f252b4d732791843a2.js",
     "service-worker.js": "/aviasales-app/service-worker.js",
     "static/css/2.8d86f356.chunk.css.map": "/aviasales-app/static/css/2.8d86f356.chunk.css.map",
     "static/css/main.693b7d97.chunk.css.map": "/aviasales-app/static/css/main.693b7d97.chunk.css.map",
-    "static/js/2.30a740bf.chunk.js.LICENSE.txt": "/aviasales-app/static/js/2.30a740bf.chunk.js.LICENSE.txt"
+    "static/js/2.7b3f9f95.chunk.js.LICENSE.txt": "/aviasales-app/static/js/2.7b3f9f95.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1aaf4800.js",
     "static/css/2.8d86f356.chunk.css",
-    "static/js/2.30a740bf.chunk.js",
+    "static/js/2.7b3f9f95.chunk.js",
     "static/css/main.693b7d97.chunk.css",
-    "static/js/main.a778d630.chunk.js"
+    "static/js/main.c9912621.chunk.js"
   ]
 }
