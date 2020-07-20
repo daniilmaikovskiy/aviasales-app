@@ -36,11 +36,12 @@ const loadingTickets = (aviasalesService) => {
 
         if (data.stop) {
           dispatch(sortingTickets());
+          dispatch(filteringTickets());
         } else {
+          dispatch(filteringTickets());
           dispatch(sortingTicketsFragment());
         }
 
-        dispatch(filteringTickets());
         dispatch(calculatingTotalPages());
         dispatch(changingVisibleTickets());
 

@@ -49,7 +49,7 @@ const sortingTicketsFragment = () => {
     const { switchKeys } = getState();
 
     if (switchKeys.length) {
-      const tickets = [...getState().queryTickets.data];
+      const tickets = [...getState().queryTickets.filteredTickets];
 
       if (switchKeys.some((el) => el === 'cheapest')) {
         sortFragment(tickets, comparePrice);

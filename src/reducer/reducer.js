@@ -72,7 +72,7 @@ export default function reducer(
     case 'SORTED_TICKETS':
       return { ...state, queryTickets: { ...state.queryTickets, data: action.tickets } };
     case 'SORTED_TICKETS_FRAGMENT':
-      return { ...state, queryTickets: { ...state.queryTickets, data: action.tickets } };
+      return { ...state, queryTickets: { ...state.queryTickets, filteredTickets: action.tickets } };
     case 'IS_FILTERED_TICKETS':
       return { ...state, queryTickets: { ...state.queryTickets, filteredTickets: action.tickets } };
     default:
