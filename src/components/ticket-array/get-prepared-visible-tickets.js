@@ -1,3 +1,5 @@
+const PAGE_ITEMS_NUMBER = 5;
+
 const getTransfersCountString = (value) => {
   switch (value) {
     case 0:
@@ -64,4 +66,13 @@ const prepareTicket = ({ price, carrier, segments, id }) => {
   return { price, carrier, to, from, id };
 };
 
-export default prepareTicket;
+const getPreparedVisibleTickets = (filteredTickets, page) => {
+  const visibleTickets = filteredTickets.slice(
+    PAGE_ITEMS_NUMBER * (page - 1),
+    PAGE_ITEMS_NUMBER * page
+  );
+
+  return visibleTickets.map((ticket) => prepareTicket(ticket));
+};
+
+export default getPreparedVisibleTickets;

@@ -1,5 +1,3 @@
-import changingVisibleTickets from '../changing-visible-tickets/changing-visible-tickets';
-
 const changedPage = (page) => {
   return {
     type: 'CHANGED_PAGE',
@@ -10,7 +8,6 @@ const changedPage = (page) => {
 const changingPage = (page) => {
   return (dispatch) => {
     dispatch(changedPage(page));
-    dispatch(changingVisibleTickets());
   };
 };
 

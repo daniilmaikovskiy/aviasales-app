@@ -13,7 +13,6 @@ export default function reducer(
       error: false,
       data: [],
       maxId: 1,
-      visibleTickets: [],
       filteredTickets: [],
     },
     pagination: {
@@ -60,11 +59,6 @@ export default function reducer(
     //     ...state,
     //     queryTickets: { ...state.queryTickets, stop: true, error: true },
     //   };
-    case 'CHANGED_VISIBLE_TICKETS':
-      return {
-        ...state,
-        queryTickets: { ...state.queryTickets, visibleTickets: [...action.tickets] },
-      };
     case 'CALCULATED_TOTAL_PAGES':
       return { ...state, pagination: { ...state.pagination, totalPages: action.totalPages } };
     case 'CHANGED_PAGE':
