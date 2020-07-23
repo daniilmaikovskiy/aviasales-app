@@ -14,15 +14,17 @@ const sortingTickets = () => {
     if (switchKeys.length) {
       const tickets = [...getState().queryTickets.data];
 
-      if (switchKeys.some((el) => el === 'cheapest')) {
-        tickets.sort(comparePrice);
-      }
+      if (getState().queryTickets.stop) {
+        if (switchKeys.some((el) => el === 'cheapest')) {
+          tickets.sort(comparePrice);
+        }
 
-      if (switchKeys.some((el) => el === 'fastest')) {
-        tickets.sort(compareDuration);
-      }
+        if (switchKeys.some((el) => el === 'fastest')) {
+          tickets.sort(compareDuration);
+        }
 
-      dispatch(sortedTickets(tickets));
+        dispatch(sortedTickets(tickets));
+      }
     }
   };
 };

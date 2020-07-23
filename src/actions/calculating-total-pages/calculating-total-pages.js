@@ -9,8 +9,8 @@ const calculatedTotalPages = (totalPages) => {
 
 const calculatingTotalPages = () => {
   return (dispatch, getState) => {
-    const { filteredTickets } = getState().queryTickets;
-    const totalPages = Math.ceil(filteredTickets.length / PAGE_ITEMS_NUMBER);
+    const { data } = getState().queryTickets;
+    const totalPages = Math.ceil(data.length / PAGE_ITEMS_NUMBER);
 
     dispatch(calculatedTotalPages(totalPages));
   };

@@ -2,6 +2,8 @@ import React, { useEffect, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { wrapper } from './ticket-array.module.scss';
 import getPreparedVisibleTickets from './get-prepared-visible-tickets';
+import getFilteredTickets from './get-filtered-tickets';
+import getTicketsWithSortedFragment from './get-tickets-with-sorted-fragment';
 import Spinner from '../spinner';
 import ErrorAlert from '../error-alert';
 import Ticket from '../ticket';
@@ -12,17 +14,25 @@ const TicketArray = () => {
   const aviasalesService = useContext(AviasalesServiceContext);
   const dispatch = useDispatch();
 
-  const page = useSelector((state) => state.pagination.page);
+  const page = useSelector(({ pagination }) => pagination.page);
+  const transfersFilter = useSelector(({ transfersFilter: filter }) => filter);
 
-  const tickets = useSelector((state) => state.queryTickets.data);
-  const filteredTickets = useSelector((state) => state.queryTickets.filteredTickets);
-  const visibleTickets = useSelector(({ queryTickets, pagination }) =>
-    getPreparedVisibleTickets(queryTickets.filteredTickets, pagination.page)
+  const tickets = useSelector(({ queryTickets }) => queryTickets.data);
+  const filteredTickets = useSelector(({ queryTickets, transfersFilter: filter, switchKeys }) => {
+    const filtered = getFilteredTickets(queryTickets.data, filter);
+
+    if (!queryTickets.stop) {
+      return getTicketsWithSortedFragment(filtered, switchKeys);
+    }
+
+    return filtered;
+  });
+  const visibleTickets = useSelector(({ pagination }) =>
+    getPreparedVisibleTickets(filteredTickets, pagination.page)
   );
 
-  const transfersFilter = useSelector((state) => state.transfersFilter);
-  const error = useSelector((state) => state.queryTickets.error);
-  const stop = useSelector((state) => state.queryTickets.stop);
+  const error = useSelector(({ queryTickets }) => queryTickets.error);
+  const stop = useSelector(({ queryTickets }) => queryTickets.stop);
 
   useEffect(() => {
     dispatch(actions.loadingTickets(aviasalesService));

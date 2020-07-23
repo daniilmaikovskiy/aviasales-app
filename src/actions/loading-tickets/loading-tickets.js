@@ -1,7 +1,5 @@
 import calculatingTotalPages from '../calculating-total-pages/calculating-total-pages';
 import sortingTickets from '../sorting-tickets/sorting-tickets';
-import sortingTicketsFragment from '../sorting-tickets-fragment/sorting-tickets-fragment';
-import filteringTickets from '../filtering-tickets/filtering-tickets';
 
 const receivedTickets = (tickets, stop, maxId) => {
   return {
@@ -32,15 +30,7 @@ const loadingTickets = (aviasalesService) => {
         });
 
         dispatch(receivedTickets(tickets, data.stop, maxId + tickets.length));
-
-        if (data.stop) {
-          dispatch(sortingTickets());
-          dispatch(filteringTickets());
-        } else {
-          dispatch(filteringTickets());
-          dispatch(sortingTicketsFragment());
-        }
-
+        dispatch(sortingTickets());
         dispatch(calculatingTotalPages());
 
         if (!data.stop) {

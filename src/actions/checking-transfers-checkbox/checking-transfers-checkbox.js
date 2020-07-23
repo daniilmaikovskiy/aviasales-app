@@ -1,5 +1,4 @@
 import { ALL_TRANSFERS_FILTER_VALUES } from '../settings';
-import filteringTickets from '../filtering-tickets/filtering-tickets';
 import calculatingTotalPages from '../calculating-total-pages/calculating-total-pages';
 
 const isAll = (array) => {
@@ -48,7 +47,6 @@ const checkingTransfersCheckbox = (name) => {
     const newTransfersFilter = getNewTransfersFilter([...getState().transfersFilter], name);
 
     dispatch(checkedTransfersCheckbox(newTransfersFilter));
-    dispatch(filteringTickets());
     dispatch(calculatingTotalPages());
   };
 };
